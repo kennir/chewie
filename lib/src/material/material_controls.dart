@@ -272,9 +272,7 @@ class _MaterialControlsState extends State<MaterialControls>
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     if (chewieController.isLive)
-                      const Expanded(child: Text('LIVE'))
-                    else
-                      _buildPosition(iconColor),
+                      const Expanded(child: Text('LIVE')),
                     if (chewieController.allowMuting)
                       _buildMuteButton(controller),
                     const Spacer(),
@@ -291,7 +289,15 @@ class _MaterialControlsState extends State<MaterialControls>
                     padding: const EdgeInsets.only(right: 20),
                     child: Row(
                       children: [
+                        _buildPosition(iconColor),
+                        SizedBox.fromSize(
+                          size: const Size(10, 0),
+                        ),
                         _buildProgressBar(),
+                        SizedBox.fromSize(
+                          size: const Size(10, 0),
+                        ),
+                        _buildRemaining(iconColor),
                       ],
                     ),
                   ),
@@ -420,26 +426,23 @@ class _MaterialControlsState extends State<MaterialControls>
 
   Widget _buildPosition(Color? iconColor) {
     final position = _latestValue.position;
-    final duration = _latestValue.duration;
 
-    return RichText(
-      text: TextSpan(
-        text: '${formatDuration(position)} ',
-        children: <InlineSpan>[
-          TextSpan(
-            text: '/ ${formatDuration(duration)}',
-            style: TextStyle(
-              fontSize: 14.0,
-              color: Colors.white.withOpacity(.75),
-              fontWeight: FontWeight.normal,
-            ),
-          )
-        ],
-        style: const TextStyle(
-          fontSize: 14.0,
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
-        ),
+    return Text(
+      '${formatDuration(position)} ',
+      style: const TextStyle(
+        fontSize: 14.0,
+        color: Colors.white,
+      ),
+    );
+  }
+
+  Widget _buildRemaining(Color? iconColor) {
+    final duration = _latestValue.duration;
+    return Text(
+      '${formatDuration(duration)} ',
+      style: const TextStyle(
+        fontSize: 14.0,
+        color: Colors.white,
       ),
     );
   }
