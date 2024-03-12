@@ -114,6 +114,14 @@ class _ChewieDemoState extends State<ChewieDemo> {
       videoPlayerController: _videoPlayerController1,
       autoPlay: true,
       looping: true,
+      allowFullScreen: false,
+      allowMuting: false,
+      showOptions: false,
+      materialProgressColors: ChewieProgressColors(
+        backgroundColor: const Color.fromRGBO(255, 255, 255, 0.8),
+        playedColor: Colors.white,
+        handleColor: Colors.white,
+      ),
       progressIndicatorDelay:
           bufferDelay != null ? Duration(milliseconds: bufferDelay!) : null,
 
