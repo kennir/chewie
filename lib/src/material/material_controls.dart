@@ -265,7 +265,7 @@ class _MaterialControlsState extends State<MaterialControls>
           minimum: chewieController.controlsSafeAreaMinimum,
           child: Column(
             mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Flexible(
                 child: Row(
